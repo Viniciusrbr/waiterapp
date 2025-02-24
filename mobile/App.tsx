@@ -1,7 +1,6 @@
 import { useFonts } from 'expo-font';
+import { Main } from './src/Main';
 import { StatusBar } from 'expo-status-bar';
-import { View } from 'react-native';
-import { Text } from './src/components/Text';
 
 export default function App() {
 
@@ -16,11 +15,9 @@ export default function App() {
   }
 
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text weight='700' >Olá Mundo</Text>
-      <Text weight='600' >Olá Mundo</Text>
-      <Text weight='400'>Olá Mundo</Text>
-      <StatusBar style='dark' />
-    </View>
+    <>
+      <StatusBar style="dark" />
+      <Main />
+    </>
   );
 }
