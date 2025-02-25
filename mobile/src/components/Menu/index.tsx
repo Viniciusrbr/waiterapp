@@ -10,10 +10,27 @@ import {
 } from './styles';
 import { formatCurrency } from '../../utils/formatCurrency';
 import { PlusCircle } from '../Icons/PlusCircle';
+import { ProductModal } from '../ProductModal';
+import { useState } from 'react';
+import { Product } from '../../types/Product';
 
 export function Menu() {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState<null | Product>(null);
+
+  function handleOpenModal(product: Product) {
+    setIsModalVisible(true);
+    setSelectedProduct(product);
+  }
+
   return (
     <>
+      <ProductModal
+        visible={isModalVisible}
+        onClose={() => setIsModalVisible(false)}
+        product={selectedProduct}
+      />
+
       <FlatList
         data={products}
         style={{ marginTop: 32 }}
@@ -21,7 +38,7 @@ export function Menu() {
         keyExtractor={product => product._id}
         ItemSeparatorComponent={Separator}
         renderItem={({ item: product }) => (
-          <ProductContainer>
+          <ProductContainer onPress={() => handleOpenModal(product)}>
             <ProductImage
               source={{ uri: `http://192.168.18.30:3001/uploads/${product.imagePath}` }}
             />
