@@ -1,26 +1,27 @@
-import { FlatList } from 'react-native';
-import { Text } from '../Text';
-import { products } from '../../mocks/products';
+import { useState } from 'react'
+import { FlatList } from 'react-native'
+
+import { products } from '../../mocks/products'
+import { Product } from '../../types/Product'
+import { formatCurrency } from '../../utils/formatCurrency'
+import { PlusCircle } from '../Icons/PlusCircle'
+import { ProductModal } from '../ProductModal'
+import { Text } from '../Text'
 import {
-  ProductContainer,
-  ProductImage,
-  ProductDetails,
-  Separator,
   AddToCardButton,
-} from './styles';
-import { formatCurrency } from '../../utils/formatCurrency';
-import { PlusCircle } from '../Icons/PlusCircle';
-import { ProductModal } from '../ProductModal';
-import { useState } from 'react';
-import { Product } from '../../types/Product';
+  ProductContainer,
+  ProductDetails,
+  ProductImage,
+  Separator,
+} from './styles'
 
 export function Menu() {
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState<null | Product>(null);
+  const [isModalVisible, setIsModalVisible] = useState(false)
+  const [selectedProduct, setSelectedProduct] = useState<null | Product>(null)
 
   function handleOpenModal(product: Product) {
-    setIsModalVisible(true);
-    setSelectedProduct(product);
+    setIsModalVisible(true)
+    setSelectedProduct(product)
   }
 
   return (
@@ -35,20 +36,24 @@ export function Menu() {
         data={products}
         style={{ marginTop: 32 }}
         contentContainerStyle={{ paddingHorizontal: 24 }}
-        keyExtractor={product => product._id}
+        keyExtractor={(product) => product._id}
         ItemSeparatorComponent={Separator}
         renderItem={({ item: product }) => (
           <ProductContainer onPress={() => handleOpenModal(product)}>
             <ProductImage
-              source={{ uri: `http://192.168.18.30:3001/uploads/${product.imagePath}` }}
+              source={{
+                uri: `http://192.168.18.30:3001/uploads/${product.imagePath}`,
+              }}
             />
 
             <ProductDetails>
-              <Text weight='600'>{product.name}</Text>
-              <Text size={14} color='#666' style={{ marginVertical: 8 }}>
+              <Text weight="600">{product.name}</Text>
+              <Text size={14} color="#666" style={{ marginVertical: 8 }}>
                 {product.description}
               </Text>
-              <Text size={14} weight='600'>{formatCurrency(product.price)}</Text>
+              <Text size={14} weight="600">
+                {formatCurrency(product.price)}
+              </Text>
             </ProductDetails>
 
             <AddToCardButton>

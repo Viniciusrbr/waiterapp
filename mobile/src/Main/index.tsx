@@ -1,21 +1,28 @@
-import { useState } from "react";
-import { Button } from "../components/Button";
-import { Categories } from "../components/Categories";
-import { Header } from "../components/Header";
-import { Menu } from "../components/Menu";
-import { TableModal } from "../components/TableModal";
-import { Container, CategoriesContainer, MenuContainer, Footer, FooterContainer } from "./styles";
+import { useState } from 'react'
+
+import { Button } from '../components/Button'
+import { Categories } from '../components/Categories'
+import { Header } from '../components/Header'
+import { Menu } from '../components/Menu'
+import { TableModal } from '../components/TableModal'
+import {
+  CategoriesContainer,
+  Container,
+  Footer,
+  FooterContainer,
+  MenuContainer,
+} from './styles'
 
 export function Main() {
-  const [isTableModalVisible, setIsTableModalVisible] = useState(false);
-  const [selectedTable, setSelectedTable] = useState('');
+  const [isTableModalVisible, setIsTableModalVisible] = useState(false)
+  const [selectedTable, setSelectedTable] = useState('')
 
   function handleSaveTable(table: string) {
-    setSelectedTable(table);
+    setSelectedTable(table)
   }
 
   function handleCancelOrder() {
-    setSelectedTable('');
+    setSelectedTable('')
   }
 
   return (
@@ -33,7 +40,6 @@ export function Main() {
         <MenuContainer>
           <Menu />
         </MenuContainer>
-
       </Container>
 
       <Footer>
@@ -52,5 +58,5 @@ export function Main() {
         onSave={handleSaveTable}
       />
     </>
-  );
+  )
 }

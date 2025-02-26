@@ -9,23 +9,23 @@ export const products = [
       {
         name: 'Mussarela',
         icon: '🧀',
-        _id: '67b65b49d547fc5b0118db20'
+        _id: '67b65b49d547fc5b0118db20',
       },
       {
         name: 'Parmesão',
         icon: '🧀',
-        _id: '67b65b49d547fc5b0118db21'
+        _id: '67b65b49d547fc5b0118db21',
       },
       {
         name: 'Gouda',
         icon: '🧀',
-        _id: '67b65b49d547fc5b0118db22'
+        _id: '67b65b49d547fc5b0118db22',
       },
       {
         name: 'Brie',
         icon: '🧀',
-        _id: '67b65b49d547fc5b0118db23'
-      }
+        _id: '67b65b49d547fc5b0118db23',
+      },
     ],
   },
   {
@@ -36,4 +36,4 @@ export const products = [
     price: 7,
     ingredients: [],
   },
-];
+]

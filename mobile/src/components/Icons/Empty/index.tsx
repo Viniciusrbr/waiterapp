@@ -1,7 +1,7 @@
-import { SvgXml } from 'react-native-svg';
+import { SvgXml } from 'react-native-svg'
 
-import { markup } from './markup';
+import { markup } from './markup'
 
 export function Empty() {
-  return <SvgXml xml={markup} />;
+  return <SvgXml xml={markup} />
 }
