@@ -10,6 +10,7 @@ interface OrderModalProps {
   order: Order | null
   onClose: () => void
   onCancelOrder: () => Promise<void>
+  onChangeOrderStatus: () => Promise<void>
   isLoading: boolean
 }
 
@@ -19,6 +20,7 @@ export function OrderModal({
   onClose,
   onCancelOrder,
   isLoading,
+  onChangeOrderStatus,
 }: OrderModalProps) {
   // fecha o modal ao apertar a tecla ESC
   useEffect(() => {
@@ -49,13 +51,13 @@ export function OrderModal({
         <header>
           <strong>Mesa {order.table}</strong>
 
-          <button type="submit" onClick={onClose}>
+          <button type="button" onClick={onClose}>
             <img src={closeIcon} alt="Fechar modal" />
           </button>
         </header>
 
         <div className="status-container">
-          <small>Status</small>
+          <small>Status do pedido</small>
           <div>
             <span>{order.status === 'WAITING' && '⏱'}</span>
             <span>{order.status === 'IN_PRODUCTION' && '👨‍🍳'}</span>
@@ -99,7 +101,12 @@ export function OrderModal({
 
         <Actions>
           {order.status !== 'DONE' && (
-            <button type="button" className="primary" disabled={isLoading}>
+            <button
+              type="button"
+              className="primary"
+              onClick={onChangeOrderStatus}
+              disabled={isLoading}
+            >
               <span>
                 {order.status === 'WAITING' && '👨‍🍳'}
                 {order.status === 'IN_PRODUCTION' && '✅'}
