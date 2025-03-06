@@ -9,9 +9,17 @@ interface OrderModalProps {
   visible: boolean
   order: Order | null
   onClose: () => void
+  onCancelOrder: () => Promise<void>
+  isLoading: boolean
 }
 
-export function OrderModal({ visible, order, onClose }: OrderModalProps) {
+export function OrderModal({
+  visible,
+  order,
+  onClose,
+  onCancelOrder,
+  isLoading,
+}: OrderModalProps) {
   // fecha o modal ao apertar a tecla ESC
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
@@ -91,7 +99,7 @@ export function OrderModal({ visible, order, onClose }: OrderModalProps) {
 
         <Actions>
           {order.status !== 'DONE' && (
-            <button type="button" className="primary">
+            <button type="button" className="primary" disabled={isLoading}>
               <span>
                 {order.status === 'WAITING' && '👨‍🍳'}
                 {order.status === 'IN_PRODUCTION' && '✅'}
@@ -103,7 +111,12 @@ export function OrderModal({ visible, order, onClose }: OrderModalProps) {
             </button>
           )}
 
-          <button type="button" className="secondary">
+          <button
+            onClick={onCancelOrder}
+            disabled={isLoading}
+            type="button"
+            className="secondary"
+          >
             <strong>Cancelar Pedido</strong>
           </button>
         </Actions>
