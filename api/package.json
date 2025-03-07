@@ -1,0 +1,33 @@
+{
+  "name": "api",
+  "author": "",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "commonjs",
+  "license": "ISC",
+  "keywords": [],
+  "scripts": {
+    "build": "tsc",
+    "dev": "nodemon src/index.ts",
+    "lint": "eslint src --ext .ts --fix",
+    "start": "node dist"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "mongoose": "^8.10.1",
+    "multer": "^1.4.5-lts.1",
+    "react-toastify": "^11.0.5",
+    "socket.io": "^4.8.1"
+  },
+  "devDependencies": {
+    "@rocketseat/eslint-config": "^2.1.0",
+    "@types/express": "^5.0.0",
+    "@types/multer": "^1.4.12",
+    "eslint": "^8.55.0",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "nodemon": "^3.1.9",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3"
+  }
+}
